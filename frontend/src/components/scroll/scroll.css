@@ -4,6 +4,9 @@
     cursor: pointer;
     position: relative;
     margin-top: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .arrow-1{
@@ -13,8 +16,6 @@
     opacity: 0.5;
     border-radius: 50%;
     position: absolute;
-    top: -20px;
-    left: -20px;
 }
 
 .arrow-2{
