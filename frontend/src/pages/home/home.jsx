@@ -9,7 +9,9 @@ function Home() {
     <section id='home'>
       <Nav />
       <Header />
-      <Scroll />
+      <Scroll
+        link={'stack'}
+      />
       <Stack />
     </section>
   );
