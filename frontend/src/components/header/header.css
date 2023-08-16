@@ -1,0 +1,50 @@
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    height: 100%;
+}
+
+.portrait {
+    width: 27%;
+}
+
+h1 {
+    color: var(--solid-heading, #42446E);
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+.my-name {
+    background: var(--gradient-heading, linear-gradient(90deg, #13B0F5 2.60%, #E70FAA 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: -1px;
+}
+
+@media screen and (max-width: 690px) {
+    header {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .portrait {
+        width: 75%;
+    }
+
+    h1 {
+        font-size: 7vw;
+    }
+}
