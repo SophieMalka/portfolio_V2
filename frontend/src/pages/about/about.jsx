@@ -29,7 +29,7 @@ function About() {
                         contract={'CDI'}
                         business={'Abel Franklin'}
                         location={'Nice'}
-                        date={'2017 - 2023'}
+                        date={'2017 - 2022'}
                         infos={<ul>
                             <li>Migration vers PrestaShop 1.7</li>
                             <li>Refonte intégrale</li>
