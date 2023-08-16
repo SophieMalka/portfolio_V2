@@ -1,0 +1,69 @@
+.item {
+    border-bottom: 1px solid #EBEAED;
+}
+
+.item-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.item-header-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-title {
+    color: var(--dark-content, #666);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.item-contract-box {
+    border-radius: 100px;
+    background: var(--button-success, #D7FFE0);
+    padding: 2px 20px;
+    height: fit-content;
+}
+
+.item-contract {
+    color: var(--button-text, #018C0F);
+    text-align: center;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.item-business,
+.item-location,
+.item-date {
+    color: var(--light-content, #A7A7A7);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 1px;
+}
+
+.item-header-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.item-infos {
+    color: var(--dark-content, #666);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
