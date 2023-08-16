@@ -1,12 +1,9 @@
 .arrow-container{
     width: 100px;
     height: 100px;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
     cursor: pointer;
+    position: relative;
+    margin-top: 7%;
 }
 
 .arrow-1{
@@ -16,6 +13,8 @@
     opacity: 0.5;
     border-radius: 50%;
     position: absolute;
+    top: -20px;
+    left: -20px;
 }
 
 .arrow-2{
@@ -23,13 +22,11 @@
     height: 60px;
     background: rgba(134, 89, 204, 0.6);
     border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 20px;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .arrow-2:before{
