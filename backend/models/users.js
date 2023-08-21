@@ -8,11 +8,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     email: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     password: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {

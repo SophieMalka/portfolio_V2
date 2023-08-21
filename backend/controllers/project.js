@@ -13,7 +13,9 @@ exports.getAllProjects = (req, res, next) => {
           imgUrl: `${req.protocol}://${req.get("host")}/images/${project.imgUrl}`, // include imgUrl here
           title: project.title,
           description: project.description,
-          link: project.link
+          stack: project.stack,
+          live: project.live,
+          code: project.code
         };
       });
       res.status(200).json(mappedProjects);
@@ -35,7 +37,9 @@ exports.getOneProject = (req, res, next) => {
         imgUrl: `${req.protocol}://${req.get("host")}/images/${project.imgUrl}`,
         title: project.title,
         description: project.description,
-        link: project.link
+        stack: project.stack,
+        live: project.live,
+        code: project.code
       };
 
       res.status(200).json(mappedProject);
@@ -63,7 +67,7 @@ exports.createProject = (req, res, next) => {
 
 exports.updateProject = async (req, res, next) => {
   const projectId = req.params.id;
-  const { title, description, link } = req.body;
+  const { title, description, stack, live, code } = req.body;
   let imgUrl = null;
   let imgData = null;
 
@@ -89,8 +93,16 @@ exports.updateProject = async (req, res, next) => {
       project.description = description;
     }
 
-    if (link) {
-      project.link = link;
+    if (stack) {
+      project.stack = stack;
+    }
+
+    if (live) {
+      project.live = live;
+    }
+
+    if (code) {
+      project.code = code;
     }
 
     if (imgUrl) {

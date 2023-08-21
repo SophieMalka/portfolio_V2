@@ -19,7 +19,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    link: {
+    stack: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    live: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    code: {
       type: DataTypes.STRING(255),
       allowNull: true
     }

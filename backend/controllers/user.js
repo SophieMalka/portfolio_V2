@@ -47,31 +47,35 @@ exports.login = (req, res, next) => {
 exports.signup = (req, res, next) => {
   const { email, password } = req.body;
 
-  db.get("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Une erreur est survenue lors de la création du compte.");
-    } else if (row) {
-      res.status(409).json({ message: "Cet email est déjà utilisé." });
-    } else {
+  User.findOne({
+    where: { email: email },
+  })
+    .then((existingUser) => {
+      if (existingUser) {
+        return res.status(409).json({ message: "Cet email est déjà utilisé." });
+      }
+
       bcrypt.hash(password, 10, (err, hashedPassword) => {
         if (err) {
           console.error(err);
-          res.status(500).send("Une erreur est survenue lors de la création du compte.");
-        } else {
-          db.run("INSERT INTO users (email, password) VALUES (?, ?)", [email, hashedPassword], function (err) {
-            if (err) {
-              console.error(err);
-              res.status(500).send("Une erreur est survenue lors de la création du compte.");
-            } else {
-              const token = jwt.sign({ userId: this.lastID }, process.env.TOKEN_SECRET, { expiresIn: "4h" });
-              res.status(201).json({ token });
-            }
-          });
+          return res.status(500).send("Une erreur est survenue lors de la création du compte.");
         }
+
+        User.create({ email: email, password: hashedPassword })
+          .then((user) => {
+            const token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "4h" });
+            res.status(201).json({ token });
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).send("Une erreur est survenue lors de la création du compte.");
+          });
       });
-    }
-  });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Une erreur est survenue lors de la création du compte.");
+    });
 };
 
 // exports.findAll = (req, res, next) => {

@@ -56,18 +56,25 @@ db.Sequelize = Sequelize;
  *BLOC DE génération auto d'une table SQL pour un Model en particulier
  */
 const sequelizeOptions = { logging: console.log };
-const dbModel = require("./users" && "./projects")(sequelize, Sequelize.DataTypes); // on charge le Model pour que Sequelize puisse créer la structure de la table dans la BDD
+
+const userModel = require("./users")(sequelize, Sequelize.DataTypes);
+const projectModel = require("./projects")(sequelize, Sequelize.DataTypes);
+
 if (DB_FORCE_RESTART === "true" && process.env.ENV !== "production") {
   sequelizeOptions.force = false;
 }
-dbModel
-  .sync(sequelizeOptions)
-  .then((result) => {
-    console.log(result);
-    console.log("Model synchronisé, BDD SQL à jour !!!");
+
+Promise.all([
+  userModel.sync(sequelizeOptions),
+  projectModel.sync(sequelizeOptions)
+])
+  .then((results) => {
+    console.log("Modèles synchronisés, BDD SQL à jour !!!");
+    console.log(results); // Vous pouvez enregistrer les résultats pour le débogage si nécessaire
   })
   .catch((err) => {
     console.log(err);
   });
+
 
 module.exports = db;
